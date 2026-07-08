@@ -2,6 +2,14 @@ from flask import Flask, render_template, request, redirect, url_for, session
 from database import get_db
 
 app = Flask(__name__)
+import os
+
+@app.route("/test-env")
+def test_env():
+    if os.environ.get("DB_PASSWORD"):
+        return "DB_PASSWORD FOUND"
+    else:
+        return "DB_PASSWORD NOT FOUND"
 app.secret_key = "school_management_secret_key"
 
 
