@@ -1,7 +1,7 @@
 import os
 import mysql.connector
 
-def get_db_connection():
+def get_db():
     connection = mysql.connector.connect(
         host=os.environ.get("DB_HOST"),
         port=int(os.environ.get("DB_PORT")),
