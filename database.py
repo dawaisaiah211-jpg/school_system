@@ -1,12 +1,13 @@
 import os
 import mysql.connector
 
-def get_db():
-    conn = mysql.connector.connect(
-        host="mysql-325837d0-dawaisaiah211-4d7a.h.aivencloud.com",
-        port=11209,
-        user="avnadmin",
+def get_db_connection():
+    connection = mysql.connector.connect(
+        host=os.environ.get("DB_HOST"),
+        port=int(os.environ.get("DB_PORT")),
+        database=os.environ.get("DB_NAME"),
+        user=os.environ.get("DB_USER"),
         password=os.environ.get("DB_PASSWORD"),
-        database="defaultdb"
+        ssl_disabled=False
     )
-    return conn
+    return connection
